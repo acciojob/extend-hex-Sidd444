@@ -1,19 +1,19 @@
 const extendHex = (shortHex) => {
   // write your code here
-	let s="#";
-	if(shortHex.length===4){
-	 s+=shortHex[1]+shortHex[1];
-	 s+=shortHex[2]+shortHex[2];
-	 s+=shortHex[3]+shortHex[3];
-	}else{
-		s+=shortHex[0]+shortHex[0];
-		s+=shortHex[1]+shortHex[1];
-		s+=shortHex[2]+shortHex[2];
-	}
-	
-	return s;
+  if(shortHex.length==4) shortHex=shortHex.substring(1,4);
+   let s="#",low=false,high=false;
+   for(let i=0;i<shortHex.length;i++){
+	   let c=shortHex[i];
+	   if(isNaN(c)){
+		   if(c===c.toLowerCase()) low=true;
+		   if(c===c.toUpperCase()) high=true;
+	   }
+	   s+=shortHex[i]+shortHex[i];
+   }
+   if(low && high) s=s.toUpperCase();
+   return s;
 };
-   
+ 
 // Do not change the code below.
-//const shortHex = prompt("Enter Short Hex.");
+const shortHex = prompt("Enter Short Hex.");
 alert(extendHex(shortHex));
